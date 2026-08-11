@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kevin RAZAFIMANDIMBY - Développeur</title>
-    <meta name="description" content="Portfolio de Kevin RAZAFIMANDIMBY, étudiant en 2ème année à l'ENI. Développement web et desktop.">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <meta name="description" content="Portfolio de Kevin RAZAFIMANDIMBY, étudiant en 2ème année à l'ENI. Développement web et desktop." />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-    <!-- ========== NAVIGATION ========== -->
+    <!-- ========== HEADER ========== -->
     <header>
         <div class="container">
             <nav>
-                <a href="#" class="logo">Portfolio</a>
+                <a href="#" class="logo">K<span class="accent">.</span></a>
                 <ul class="nav-links">
                     <li><a href="#about">À propos</a></li>
                     <li><a href="#projects">Projets</a></li>
@@ -23,9 +23,7 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <button class="hamburger" aria-label="Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span></span><span></span><span></span>
                 </button>
             </nav>
         </div>
@@ -36,13 +34,13 @@
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-text">
-                    <span class="badge">Étudiant en 2ème année</span>
+                    <p class="greeting">Bonjour, je suis</p>
                     <h1>Kevin <span class="accent">RAZAFIMANDIMBY</span></h1>
                     <p class="subtitle">Développeur <span class="accent">Web & Desktop</span></p>
                     <p class="description">
-                        Passionné par le développement logiciel, je conçois des applications 
-                        fonctionnelles et élégantes. Actuellement en <strong>2ème année à l'ENI</strong>, 
-                        je maîtrise aussi bien le <strong>développement web</strong> que le <strong>desktop</strong>.
+                        Étudiant en <strong>2ème année à l'ENI</strong>, je conçois des applications 
+                        fonctionnelles et élégantes. Je maîtrise aussi bien le <strong>développement web</strong> 
+                        (HTML, CSS, JavaScript, PHP) que le <strong>desktop</strong> (C#, .NET, SQL Server).
                     </p>
                     <div class="hero-actions">
                         <a href="#projects" class="btn primary">
@@ -55,7 +53,7 @@
                 </div>
                 <div class="hero-visual">
                     <div class="profile-card">
-                        <img src="profile.jpeg" alt="Kevin RAZAFIMANDIMBY" class="profile-img">
+                        <img src="profile.jpeg" alt="Kevin RAZAFIMANDIMBY" class="profile-img" />
                         <div class="profile-status">
                             <span class="dot"></span>
                             Disponible
@@ -75,7 +73,7 @@
         </div>
     </section>
 
-    <!-- ========== À PROPOS ========== -->
+    <!-- ========== ABOUT ========== -->
     <section id="about">
         <div class="container">
             <h2 class="section-title">À propos</h2>
@@ -88,8 +86,8 @@
                     </p>
                     <p>
                         Curieux et rigoureux, j'aime relever des défis techniques et créer des solutions 
-                        concrètes. Je me forme aussi bien au <strong>développement web</strong> (HTML, CSS, JavaScript, PHP) 
-                        qu'au <strong>développement desktop</strong> (C#, .NET, WinForm, SQL Server).
+                        concrètes. Je me forme aussi bien au <strong>développement web</strong> qu'au 
+                        <strong>développement desktop</strong>.
                     </p>
                     <div class="about-highlights">
                         <div class="highlight-item">
@@ -120,13 +118,12 @@
         </div>
     </section>
 
-    <!-- ========== PROJETS ========== -->
+    <!-- ========== PROJECTS ========== -->
     <section id="projects">
         <div class="container">
             <h2 class="section-title">Projets</h2>
             <div class="projects-grid">
 
-                <!-- Projet 1 : Mini-Doodle -->
                 <div class="project-card">
                     <div class="project-header">
                         <span class="project-icon">📚</span>
@@ -134,23 +131,18 @@
                     </div>
                     <h3>Mini-Doodle</h3>
                     <p class="project-desc">
-                        Application de gestion de cours en ligne. Permet de gérer les étudiants, 
-                        les matières, les notes et les emplois du temps.
+                        Application de gestion de cours en ligne. Gestion des étudiants, matières, notes et emplois du temps.
                     </p>
                     <div class="project-tech">
-                        <span>C#</span>
-                        <span>.NET</span>
-                        <span>WinForm</span>
-                        <span>SQL Server</span>
+                        <span>C#</span><span>.NET</span><span>WinForm</span><span>SQL Server</span>
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/niainakevinDev/Mini-Doodle" target="_blank" class="btn small outline">
-                            <i class="fab fa-github"></i> Voir le code
+                            <i class="fab fa-github"></i> Code
                         </a>
                     </div>
                 </div>
 
-                <!-- Projet 2 : Tic-Tac-Toe -->
                 <div class="project-card">
                     <div class="project-header">
                         <span class="project-icon">❌⭕</span>
@@ -158,13 +150,10 @@
                     </div>
                     <h3>Tic-Tac-Toe</h3>
                     <p class="project-desc">
-                        Jeu de morpion à 2 joueurs avec interface moderne, animations fluides, 
-                        scores en direct et fonction "Annuler".
+                        Jeu de morpion à 2 joueurs avec interface moderne, animations fluides et scores en direct.
                     </p>
                     <div class="project-tech">
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>JavaScript</span>
+                        <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
                     </div>
                     <div class="project-links">
                         <a href="https://niainakevindev.github.io/tictactoe/" target="_blank" class="btn small primary">
@@ -176,7 +165,6 @@
                     </div>
                 </div>
 
-                <!-- Projet 3 : Puissance 4 -->
                 <div class="project-card">
                     <div class="project-header">
                         <span class="project-icon">🎯</span>
@@ -184,14 +172,10 @@
                     </div>
                     <h3>Puissance 4</h3>
                     <p class="project-desc">
-                        Jeu de stratégie avec IA utilisant l'algorithme Minimax. 
-                        Mode 2 joueurs ou contre l'IA.
+                        Jeu de stratégie avec IA utilisant l'algorithme Minimax. Mode 2 joueurs ou contre l'IA.
                     </p>
                     <div class="project-tech">
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>JavaScript</span>
-                        <span>Minimax</span>
+                        <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Minimax</span>
                     </div>
                     <div class="project-links">
                         <a href="https://niainakevindev.github.io/Puissance4/" target="_blank" class="btn small primary">
@@ -203,7 +187,6 @@
                     </div>
                 </div>
 
-                <!-- Projet 4 : Gestion de caisse d'église -->
                 <div class="project-card">
                     <div class="project-header">
                         <span class="project-icon">⛪</span>
@@ -211,12 +194,10 @@
                     </div>
                     <h3>Gestion de caisse d'église</h3>
                     <p class="project-desc">
-                        Application web pour la gestion des offrandes, des dépenses et 
-                        des rapports financiers d'une église.
+                        Application web pour la gestion des offrandes, des dépenses et des rapports financiers.
                     </p>
                     <div class="project-tech">
-                        <span>PHP</span>
-                        <span>Web</span>
+                        <span>PHP</span><span>Web</span>
                     </div>
                     <div class="project-links">
                         <a href="https://gestioncaisseeglise.freepage.cc" target="_blank" class="btn small primary">
@@ -229,7 +210,7 @@
         </div>
     </section>
 
-    <!-- ========== COMPÉTENCES ========== -->
+    <!-- ========== SKILLS ========== -->
     <section id="skills">
         <div class="container">
             <h2 class="section-title">Compétences</h2>
