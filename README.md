@@ -22,13 +22,14 @@ Portfolio de **Kevin RAZAFIMANDIMBY**, étudiant en 2ème année à l'ENI.
 
 ## 📦 Projets
 
-| Projet | Stack | Lien |
-|--------|-------|------|
-| **Java Project** | Java, NetBeans, PostgreSQL | [GitHub](https://github.com/niainakevinDev/java_project) |
-| **Mini-Doodle** | C#, .NET, WinForm, SQL Server | [GitHub](https://github.com/niainakevinDev/Mini-Doodle) |
-| **Tic-Tac-Toe** | HTML5, CSS3, JavaScript | [Démo](https://niainakevindev.github.io/tictactoe/) |
-| **Puissance 4** | HTML5, CSS3, JavaScript, Minimax | [Démo](https://niainakevindev.github.io/Puissance4/) |
-| **Gestion de caisse** | PHP, Web | [Site](https://gestioncaisseeglise.freepage.cc) |
+| Projet | Stack | Description | Lien |
+|--------|-------|-------------|------|
+| **GamersHub** | PHP, Vue.js, MySQL | Réseau social pour gamers | [GitHub](https://github.com/niainakevinDev/gamershub) |
+| **Java Project** | Java, NetBeans, PostgreSQL | Application de gestion | [GitHub](https://github.com/niainakevinDev/java_project) |
+| **Mini-Doodle** | C#, .NET, WinForm, SQL Server | Gestion de cours en ligne | [GitHub](https://github.com/niainakevinDev/Mini-Doodle) |
+| **Tic-Tac-Toe** | HTML5, CSS3, JavaScript | Jeu de morpion moderne | [Démo](https://niainakevindev.github.io/tictactoe/) |
+| **Puissance 4** | HTML5, CSS3, JavaScript, Minimax | Jeu de stratégie avec IA | [Démo](https://niainakevindev.github.io/Puissance4/) |
+| **Gestion de caisse** | PHP, Web | Gestion financière d'église | [Site](https://gestioncaisseeglise.freepage.cc) |
 
 ## 📬 Contact
 
