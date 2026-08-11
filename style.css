@@ -17,6 +17,7 @@ body {
     color: #e8e8ed;
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
 
 ::selection {
@@ -39,12 +40,54 @@ img {
 }
 
 /* ==========================================
+   PARTICULES DE FOND
+   ========================================== */
+#particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: rgba(37, 99, 235, 0.15);
+    border-radius: 50%;
+    animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+    }
+}
+
+/* ==========================================
    CONTAINER
    ========================================== */
 .container {
     max-width: 1120px;
     margin: 0 auto;
     padding: 0 24px;
+    position: relative;
+    z-index: 1;
 }
 
 /* ==========================================
@@ -60,11 +103,12 @@ header {
     backdrop-filter: blur(14px);
     z-index: 1000;
     border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    transition: padding 0.3s ease;
+    transition: padding 0.3s ease, background 0.3s ease;
 }
 
 header.scrolled {
     padding: 12px 0;
+    background: rgba(10, 10, 15, 0.95);
 }
 
 nav {
@@ -78,9 +122,14 @@ nav {
     font-weight: 700;
     letter-spacing: -0.3px;
     color: #fff;
+    transition: color 0.3s ease;
 }
 
 .logo .accent {
+    color: #2563eb;
+}
+
+.logo:hover {
     color: #2563eb;
 }
 
@@ -93,7 +142,7 @@ nav {
     font-size: 0.85rem;
     font-weight: 500;
     color: rgba(255, 255, 255, 0.45);
-    transition: color 0.2s;
+    transition: color 0.3s ease;
     position: relative;
 }
 
@@ -105,7 +154,7 @@ nav {
     width: 0;
     height: 2px;
     background: #2563eb;
-    transition: width 0.25s ease;
+    transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .nav-links a:hover {
@@ -140,7 +189,7 @@ nav {
     height: 2px;
     background: #e8e8ed;
     border-radius: 2px;
-    transition: 0.25s ease;
+    transition: 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .hamburger.active span:nth-child(1) {
@@ -148,6 +197,7 @@ nav {
 }
 .hamburger.active span:nth-child(2) {
     opacity: 0;
+    transform: scaleX(0);
 }
 .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translate(5px, -5px);
@@ -161,6 +211,7 @@ nav {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    position: relative;
     background:
         radial-gradient(ellipse at 70% 20%, rgba(37, 99, 235, 0.05), transparent 60%),
         radial-gradient(ellipse at 30% 80%, rgba(37, 99, 235, 0.025), transparent 50%);
@@ -180,6 +231,8 @@ nav {
     font-weight: 400;
     margin-bottom: 6px;
     letter-spacing: 0.3px;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease 0.2s forwards;
 }
 
 .hero-text h1 {
@@ -188,6 +241,8 @@ nav {
     line-height: 1.08;
     letter-spacing: -1px;
     margin-bottom: 4px;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease 0.3s forwards;
 }
 
 .hero-text h1 .accent {
@@ -199,6 +254,8 @@ nav {
     font-weight: 400;
     color: rgba(255, 255, 255, 0.55);
     margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease 0.4s forwards;
 }
 
 .hero-text .subtitle .accent {
@@ -211,6 +268,8 @@ nav {
     max-width: 500px;
     line-height: 1.8;
     margin-bottom: 32px;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease 0.5s forwards;
 }
 
 .hero-text .description strong {
@@ -221,8 +280,20 @@ nav {
     display: flex;
     gap: 14px;
     flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease 0.6s forwards;
 }
 
+.hero-visual {
+    display: flex;
+    justify-content: flex-end;
+    opacity: 0;
+    animation: fadeInScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+}
+
+/* ==========================================
+   BOUTONS
+   ========================================== */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -231,9 +302,11 @@ nav {
     border-radius: 8px;
     font-weight: 600;
     font-size: 0.9rem;
-    transition: all 0.25s ease;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     border: none;
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
 }
 
 .btn.primary {
@@ -241,10 +314,26 @@ nav {
     color: #fff;
 }
 
+.btn.primary::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+    transform: rotate(45deg) translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
 .btn.primary:hover {
     background: #1d4ed8;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(37, 99, 235, 0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(37, 99, 235, 0.3);
+}
+
+.btn.primary:hover::after {
+    transform: rotate(45deg) translateX(100%);
 }
 
 .btn.secondary {
@@ -256,7 +345,7 @@ nav {
 .btn.secondary:hover {
     border-color: rgba(255, 255, 255, 0.2);
     background: rgba(255, 255, 255, 0.03);
-    transform: translateY(-2px);
+    transform: translateY(-3px);
 }
 
 .btn.small {
@@ -282,16 +371,12 @@ nav {
 .btn.small.outline:hover {
     border-color: rgba(255, 255, 255, 0.15);
     color: #fff;
+    transform: translateY(-2px);
 }
 
 /* ==========================================
    PHOTO DE PROFIL
    ========================================== */
-.hero-visual {
-    display: flex;
-    justify-content: flex-end;
-}
-
 .profile-card {
     position: relative;
     width: 320px;
@@ -305,6 +390,12 @@ nav {
     background: #14141e;
     border: 1px solid rgba(255, 255, 255, 0.04);
     box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.5s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
 }
 
 .profile-status {
@@ -323,6 +414,7 @@ nav {
     font-weight: 500;
     color: rgba(255, 255, 255, 0.55);
     white-space: nowrap;
+    animation: pulseGlow 3s ease-in-out infinite;
 }
 
 .profile-status .dot {
@@ -330,6 +422,17 @@ nav {
     height: 7px;
     border-radius: 50%;
     background: #22c55e;
+    animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { border-color: rgba(255, 255, 255, 0.06); }
+    50% { border-color: rgba(34, 197, 94, 0.15); }
 }
 
 /* ==========================================
@@ -389,6 +492,13 @@ section {
     background: #2563eb;
     border-radius: 3px;
     margin-top: 8px;
+    animation: expandWidth 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    transform-origin: left;
+}
+
+@keyframes expandWidth {
+    0% { transform: scaleX(0); }
+    100% { transform: scaleX(1); }
 }
 
 /* ==========================================
@@ -428,12 +538,23 @@ section {
     gap: 12px;
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.45);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.highlight-item:hover {
+    color: #fff;
+    transform: translateX(4px);
 }
 
 .highlight-item i {
     color: #2563eb;
     width: 20px;
     font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.highlight-item:hover i {
+    transform: scale(1.1);
 }
 
 .about-timeline {
@@ -450,6 +571,14 @@ section {
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.015);
     border: 1px solid rgba(255, 255, 255, 0.035);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: default;
+}
+
+.timeline-item:hover {
+    transform: translateX(6px);
+    border-color: rgba(37, 99, 235, 0.15);
+    background: rgba(37, 99, 235, 0.03);
 }
 
 .timeline-item .year {
@@ -478,13 +607,40 @@ section {
     border-radius: 12px;
     padding: 28px;
     border: 1px solid rgba(255, 255, 255, 0.04);
-    transition: all 0.3s ease;
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #2563eb, transparent);
+    transform: scaleX(0);
+    transition: transform 0.6s ease;
+}
+
+.project-card:hover::before {
+    transform: scaleX(1);
 }
 
 .project-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
     border-color: rgba(37, 99, 235, 0.12);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.project-card:hover .project-icon {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.project-card:hover .project-links .btn {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .project-header {
@@ -497,6 +653,7 @@ section {
 .project-icon {
     font-size: 1.5rem;
     color: #2563eb;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .project-tag {
@@ -509,6 +666,11 @@ section {
     background: rgba(37, 99, 235, 0.08);
     color: #2563eb;
     border: 1px solid rgba(37, 99, 235, 0.06);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-tag {
+    background: rgba(37, 99, 235, 0.12);
 }
 
 .project-card h3 {
@@ -538,12 +700,27 @@ section {
     background: rgba(255, 255, 255, 0.025);
     border: 1px solid rgba(255, 255, 255, 0.035);
     color: rgba(255, 255, 255, 0.35);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-tech span {
+    background: rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.55);
 }
 
 .project-links {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+}
+
+.project-links .btn {
+    opacity: 0.9;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.project-card:hover .project-links .btn {
+    opacity: 1;
 }
 
 /* ==========================================
@@ -566,6 +743,11 @@ section {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-bottom: 16px;
+    transition: color 0.3s ease;
+}
+
+.skill-group:hover h4 {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .skill-group h4 i {
@@ -588,6 +770,11 @@ section {
 .skill-item span {
     font-size: 0.85rem;
     color: rgba(255, 255, 255, 0.55);
+    transition: color 0.3s ease;
+}
+
+.skill-item:hover span {
+    color: #fff;
 }
 
 .skill-bar {
@@ -602,7 +789,8 @@ section {
     height: 100%;
     border-radius: 4px;
     background: linear-gradient(90deg, #2563eb, #1d4ed8);
-    transition: width 1s ease;
+    transition: width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    width: 0%;
 }
 
 /* ==========================================
@@ -631,21 +819,26 @@ section {
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.015);
     border: 1px solid rgba(255, 255, 255, 0.04);
-    transition: all 0.25s ease;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.45);
 }
 
 .contact-item:hover {
-    border-color: rgba(37, 99, 235, 0.12);
-    background: rgba(37, 99, 235, 0.03);
-    transform: translateY(-2px);
+    border-color: rgba(37, 99, 235, 0.15);
+    background: rgba(37, 99, 235, 0.04);
+    transform: translateY(-3px);
     color: #fff;
 }
 
 .contact-item i {
     color: #2563eb;
     font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover i {
+    transform: scale(1.15);
 }
 
 /* ==========================================
@@ -671,12 +864,38 @@ footer p {
 
 .footer-social a {
     color: rgba(255, 255, 255, 0.12);
-    transition: color 0.2s;
+    transition: all 0.3s ease;
     font-size: 1rem;
 }
 
 .footer-social a:hover {
     color: #fff;
+    transform: translateY(-3px);
+}
+
+/* ==========================================
+   ANIMATIONS GÉNÉRIQUES
+   ========================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 /* ==========================================
@@ -735,7 +954,7 @@ footer p {
         padding: 24px 32px 32px;
         gap: 16px;
         transform: translateX(-100%);
-        transition: transform 0.3s ease;
+        transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     }
 
