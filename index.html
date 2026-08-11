@@ -12,6 +12,11 @@
 <body>
 
     <!-- ========================================
+    PARTICULES DE FOND
+    ======================================== -->
+    <div id="particles"></div>
+
+    <!-- ========================================
     HEADER
     ======================================== -->
     <header>
@@ -71,15 +76,15 @@
             <div class="container">
                 <div class="hero-stats">
                     <div>
-                        <span class="stat-number">6</span>
+                        <span class="stat-number" data-count="6">0</span>
                         <span class="stat-label">Projets</span>
                     </div>
                     <div>
-                        <span class="stat-number">2024</span>
+                        <span class="stat-number" data-count="2024">0</span>
                         <span class="stat-label">Bac</span>
                     </div>
                     <div>
-                        <span class="stat-number">2</span>
+                        <span class="stat-number" data-count="2">0</span>
                         <span class="stat-label">Années d'études</span>
                     </div>
                 </div>
@@ -167,17 +172,18 @@
                     </div>
                 </div>
 
-                <!-- Java Project -->
+                <!-- Java Project - Gestion de personnel et congé -->
                 <div class="project-card">
                     <div class="project-header">
-                        <span class="project-icon"><i class="fab fa-java"></i></span>
+                        <span class="project-icon"><i class="fas fa-users-cog"></i></span>
                         <span class="project-tag">Desktop</span>
                     </div>
-                    <h3>Java Project</h3>
+                    <h3>Gestion de personnel &amp; congé</h3>
                     <p class="project-desc">
-                        <strong>Application de gestion en Java.</strong> Développée avec NetBeans
-                        et PostgreSQL. Gestion complète des données avec interface intuitive
-                        et rapports dynamiques.
+                        <strong>Application de gestion des ressources humaines.</strong> Développée en Java avec NetBeans
+                        et PostgreSQL. Permet la gestion complète des employés (fiches, postes, départements),
+                        le suivi des demandes de congé (validation, historique, solde) et la génération
+                        de rapports statistiques.
                     </p>
                     <div class="project-tech">
                         <span>Java</span><span>NetBeans</span><span>PostgreSQL</span>
