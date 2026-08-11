@@ -1,4 +1,24 @@
 // ==========================================
+// PARTICULES DE FOND
+// ==========================================
+(function createParticles() {
+    const container = document.getElementById('particles');
+    const count = 30;
+
+    for (let i = 0; i < count; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDuration = (15 + Math.random() * 20) + 's';
+        particle.style.animationDelay = (Math.random() * 20) + 's';
+        particle.style.width = (2 + Math.random() * 4) + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.opacity = 0.1 + Math.random() * 0.2;
+        container.appendChild(particle);
+    }
+})();
+
+// ==========================================
 // MENU MOBILE
 // ==========================================
 const hamburger = document.querySelector('.hamburger');
@@ -66,7 +86,7 @@ const skillObserver = new IntersectionObserver((entries) => {
             bar.style.width = '0%';
             setTimeout(() => {
                 bar.style.width = width;
-            }, 300);
+            }, 400);
         }
     });
 }, { threshold: 0.3 });
@@ -87,12 +107,44 @@ const cardObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.1 });
 
-cards.forEach(card => {
+cards.forEach((card, index) => {
     card.style.opacity = '0';
-    card.style.transform = 'translateY(24px)';
-    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    card.style.transform = 'translateY(30px)';
+    card.style.transition = `opacity 0.6s ease ${index * 0.08}s, transform 0.6s ease ${index * 0.08}s`;
     cardObserver.observe(card);
 });
+
+// ==========================================
+// STATS COUNTER ANIMATION
+// ==========================================
+const statNumbers = document.querySelectorAll('.stat-number');
+
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.getAttribute('data-count'));
+            let current = 0;
+            const increment = Math.ceil(target / 40);
+            const duration = 1200;
+            const stepTime = duration / 40;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    el.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    el.textContent = current;
+                }
+            }, stepTime);
+
+            statsObserver.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+
+statNumbers.forEach(stat => statsObserver.observe(stat));
 
 // ==========================================
 // SMOOTH SCROLL
