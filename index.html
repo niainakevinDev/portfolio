@@ -4,170 +4,188 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kevin RAZAFIMANDIMBY - Développeur</title>
-    <meta name="description" content="Portfolio de Kevin RAZAFIMANDIMBY, développeur web et desktop junior. Découvrez mes projets : Tic-Tac-Toe, Puissance 4, Mini-Doodle et Gestion de caisse d'église.">
+    <meta name="description" content="Portfolio de Kevin RAZAFIMANDIMBY, étudiant en 2ème année à l'ENI. Développement web et desktop.">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- ==========================================
-    PARTICULES DE FOND
-    ========================================== -->
-    <div class="particles-bg">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-    </div>
-
-    <!-- ==========================================
-    HEADER / NAVIGATION
-    ========================================== -->
+    <!-- ========== NAVIGATION ========== -->
     <header>
         <div class="container">
             <nav>
-                <div class="logo">
-                    <span class="highlight">&lt;</span>K<span class="highlight">/&gt;</span>
-                </div>
+                <a href="#" class="logo">KR</a>
                 <ul class="nav-links">
                     <li><a href="#about">À propos</a></li>
                     <li><a href="#projects">Projets</a></li>
                     <li><a href="#skills">Compétences</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <div class="hamburger">
+                <button class="hamburger" aria-label="Menu">
                     <span></span>
                     <span></span>
                     <span></span>
-                </div>
+                </button>
             </nav>
         </div>
     </header>
 
-    <!-- ==========================================
-    HERO SECTION
-    ========================================== -->
+    <!-- ========== HERO ========== -->
     <section id="hero">
         <div class="container">
-            <div class="hero-content">
+            <div class="hero-grid">
                 <div class="hero-text">
-                    <p class="greeting">👋 Bonjour, je suis</p>
-                    <h1>Kevin <span class="highlight">RAZAFIMANDIMBY</span></h1>
-                    <h2>Développeur <span class="highlight">Junior</span></h2>
-                    <p class="badge">🌐 Web &nbsp;|&nbsp; 💻 Desktop</p>
+                    <span class="badge">Étudiant en 2ème année</span>
+                    <h1>Kevin <span class="accent">RAZAFIMANDIMBY</span></h1>
+                    <p class="subtitle">Développeur <span class="accent">Web & Desktop</span></p>
                     <p class="description">
-                        Étudiant en <strong>1ère année à l'ENI</strong> (École Nationale de l'Informatique), 
-                        je suis passionné par le développement d'applications interactives et de jeux de stratégie. 
-                        Curieux et autodidacte, j'aime relever des défis techniques et créer des solutions concrètes.
+                        Passionné par le développement logiciel, je conçois des applications 
+                        fonctionnelles et élégantes. Actuellement en <strong>2ème année à l'ENI</strong>, 
+                        je maîtrise aussi bien le <strong>développement web</strong> que le <strong>desktop</strong>.
                     </p>
-                    <div class="hero-buttons">
-                        <a href="#projects" class="btn btn-primary">
-                            <i class="fas fa-rocket"></i> Voir mes projets
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn primary">
+                            <i class="fas fa-arrow-right"></i> Voir mes projets
                         </a>
-                        <a href="#contact" class="btn btn-secondary">
-                            <i class="fas fa-envelope"></i> Me contacter
+                        <a href="#contact" class="btn secondary">
+                            <i class="fas fa-paper-plane"></i> Contact
                         </a>
                     </div>
                 </div>
-                <div class="hero-image">
-                    <div class="profile-wrapper">
-                        <img src="profile.jpeg" alt="Kevin RAZAFIMANDIMBY" class="profile-photo">
-                        <div class="profile-ring"></div>
+                <div class="hero-visual">
+                    <div class="profile-card">
+                        <img src="profile.jpeg" alt="Kevin RAZAFIMANDIMBY" class="profile-img">
+                        <div class="profile-status">
+                            <span class="dot"></span>
+                            Disponible
+                        </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-bottom">
+            <div class="container">
+                <div class="hero-stats">
+                    <div><span class="stat-number">4</span><span class="stat-label">Projets</span></div>
+                    <div><span class="stat-number">2024</span><span class="stat-label">Bac</span></div>
+                    <div><span class="stat-number">2</span><span class="stat-label">Années d'études</span></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==========================================
-    À PROPOS
-    ========================================== -->
+    <!-- ========== À PROPOS ========== -->
     <section id="about">
         <div class="container">
-            <h2 class="section-title">À propos de moi</h2>
-            <div class="about-content">
+            <h2 class="section-title">À propos</h2>
+            <div class="about-grid">
                 <div class="about-text">
                     <p>
-                        Je suis un développeur passionné par la création d'expériences interactives 
-                        et d'applications utiles. Actuellement en <strong>1ère année à l'ENI</strong>, 
-                        je me forme aux métiers du développement web et desktop.
+                        Je suis un étudiant en <strong>2ème année à l'École Nationale de l'Informatique (ENI)</strong>, 
+                        passionné par le développement logiciel. J'ai obtenu mon <strong>Baccalauréat en 2024</strong> 
+                        avant d'entamer mon parcours en informatique.
                     </p>
                     <p>
-                        Ce qui me motive : <strong>créer des projets concrets</strong> qui allient 
-                        logique, design et interactivité. Que ce soit pour le <strong>web</strong> 
-                        (HTML, CSS, JavaScript) ou le <strong>desktop</strong> (Java, C#), 
-                        j'aime résoudre des problèmes et apprendre de nouvelles technologies.
+                        Curieux et rigoureux, j'aime relever des défis techniques et créer des solutions 
+                        concrètes. Je me forme aussi bien au <strong>développement web</strong> (HTML, CSS, JavaScript, PHP) 
+                        qu'au <strong>développement desktop</strong> (C#, .NET, WinForm, SQL Server).
                     </p>
-                    <div class="about-stats">
-                        <div class="stat">
-                            <span class="number">4</span>
-                            <span class="label">Projets réalisés</span>
+                    <div class="about-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Bac 2024 • L1 2025 • L2 2026</span>
                         </div>
-                        <div class="stat">
-                            <span class="number">2</span>
-                            <span class="label">Technologies maîtrisées</span>
+                        <div class="highlight-item">
+                            <i class="fas fa-code"></i>
+                            <span>Web (PHP) + Desktop (C#)</span>
                         </div>
-                        <div class="stat">
-                            <span class="number">2025</span>
-                            <span class="label">Début de formation</span>
-                        </div>
+                    </div>
+                </div>
+                <div class="about-timeline">
+                    <div class="timeline-item">
+                        <span class="year">2026</span>
+                        <span class="event">2ème année à l'ENI</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="year">2025</span>
+                        <span class="event">1ère année à l'ENI</span>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="year">2024</span>
+                        <span class="event">Obtention du Baccalauréat</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ==========================================
-    PROJETS
-    ========================================== -->
+    <!-- ========== PROJETS ========== -->
     <section id="projects">
         <div class="container">
-            <h2 class="section-title">Mes projets</h2>
+            <h2 class="section-title">Projets</h2>
             <div class="projects-grid">
 
-                <!-- Projet 1 : Tic-Tac-Toe -->
+                <!-- Projet 1 : Mini-Doodle -->
                 <div class="project-card">
-                    <div class="project-icon">❌⭕</div>
+                    <div class="project-header">
+                        <span class="project-icon">📚</span>
+                        <span class="project-tag">Desktop</span>
+                    </div>
+                    <h3>Mini-Doodle</h3>
+                    <p class="project-desc">
+                        Application de gestion de cours en ligne. Permet de gérer les étudiants, 
+                        les matières, les notes et les emplois du temps.
+                    </p>
+                    <div class="project-tech">
+                        <span>C#</span>
+                        <span>.NET</span>
+                        <span>WinForm</span>
+                        <span>SQL Server</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/niainakevinDev/Mini-Doodle" target="_blank" class="btn small outline">
+                            <i class="fab fa-github"></i> Voir le code
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Projet 2 : Tic-Tac-Toe -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <span class="project-icon">❌⭕</span>
+                        <span class="project-tag">Web</span>
+                    </div>
                     <h3>Tic-Tac-Toe</h3>
                     <p class="project-desc">
                         Jeu de morpion à 2 joueurs avec interface moderne, animations fluides, 
-                        scores en direct, fonction "Annuler" et confettis de victoire.
+                        scores en direct et fonction "Annuler".
                     </p>
                     <div class="project-tech">
                         <span>HTML5</span>
                         <span>CSS3</span>
                         <span>JavaScript</span>
-                        <span>Canvas</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://niainakevindev.github.io/tictactoe/" target="_blank" class="btn btn-small btn-primary">
+                        <a href="https://niainakevindev.github.io/tictactoe/" target="_blank" class="btn small primary">
                             <i class="fas fa-play"></i> Démo
                         </a>
-                        <a href="https://github.com/niainakevinDev/tictactoe" target="_blank" class="btn btn-small btn-outline">
+                        <a href="https://github.com/niainakevinDev/tictactoe" target="_blank" class="btn small outline">
                             <i class="fab fa-github"></i> Code
                         </a>
                     </div>
                 </div>
 
-                <!-- Projet 2 : Puissance 4 -->
+                <!-- Projet 3 : Puissance 4 -->
                 <div class="project-card">
-                    <div class="project-icon">🟡🔴</div>
+                    <div class="project-header">
+                        <span class="project-icon">🎯</span>
+                        <span class="project-tag">Web</span>
+                    </div>
                     <h3>Puissance 4</h3>
                     <p class="project-desc">
                         Jeu de stratégie avec IA utilisant l'algorithme Minimax. 
-                        Mode 2 joueurs ou contre l'IA avec 3 niveaux de difficulté.
+                        Mode 2 joueurs ou contre l'IA.
                     </p>
                     <div class="project-tech">
                         <span>HTML5</span>
@@ -176,30 +194,10 @@
                         <span>Minimax</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://niainakevindev.github.io/Puissance4/" target="_blank" class="btn btn-small btn-primary">
+                        <a href="https://niainakevindev.github.io/Puissance4/" target="_blank" class="btn small primary">
                             <i class="fas fa-play"></i> Démo
                         </a>
-                        <a href="https://github.com/niainakevinDev/Puissance4" target="_blank" class="btn btn-small btn-outline">
-                            <i class="fab fa-github"></i> Code
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Projet 3 : Mini-Doodle -->
-                <div class="project-card">
-                    <div class="project-icon">📚</div>
-                    <h3>Mini-Doodle</h3>
-                    <p class="project-desc">
-                        Application desktop de gestion de cours en ligne. Permet de gérer 
-                        les étudiants, les matières et les notes avec interface intuitive.
-                    </p>
-                    <div class="project-tech">
-                        <span>Java</span>
-                        <span>Desktop</span>
-                        <span>SQLite</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/niainakevinDev/Mini-Doodle" target="_blank" class="btn btn-small btn-primary">
+                        <a href="https://github.com/niainakevinDev/Puissance4" target="_blank" class="btn small outline">
                             <i class="fab fa-github"></i> Code
                         </a>
                     </div>
@@ -207,18 +205,21 @@
 
                 <!-- Projet 4 : Gestion de caisse d'église -->
                 <div class="project-card">
-                    <div class="project-icon">⛪</div>
+                    <div class="project-header">
+                        <span class="project-icon">⛪</span>
+                        <span class="project-tag">Web</span>
+                    </div>
                     <h3>Gestion de caisse d'église</h3>
                     <p class="project-desc">
                         Application web pour la gestion des offrandes, des dépenses et 
                         des rapports financiers d'une église.
                     </p>
                     <div class="project-tech">
+                        <span>PHP</span>
                         <span>Web</span>
-                        <span>Gestion</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://gestioncaisseeglise.freepage.cc" target="_blank" class="btn btn-small btn-primary">
+                        <a href="https://gestioncaisseeglise.freepage.cc" target="_blank" class="btn small primary">
                             <i class="fas fa-globe"></i> Voir le site
                         </a>
                     </div>
@@ -228,64 +229,78 @@
         </div>
     </section>
 
-    <!-- ==========================================
-    COMPÉTENCES
-    ========================================== -->
+    <!-- ========== COMPÉTENCES ========== -->
     <section id="skills">
         <div class="container">
-            <h2 class="section-title">Mes compétences</h2>
+            <h2 class="section-title">Compétences</h2>
             <div class="skills-grid">
 
-                <div class="skill-card">
-                    <i class="fab fa-html5"></i>
-                    <h4>HTML5</h4>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 85%"></div></div>
+                <div class="skill-group">
+                    <h4><i class="fas fa-globe"></i> Web</h4>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span>HTML5 / CSS3</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width:85%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span>JavaScript</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width:70%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span>PHP</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width:60%"></div></div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="skill-card">
-                    <i class="fab fa-css3-alt"></i>
-                    <h4>CSS3</h4>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
+                <div class="skill-group">
+                    <h4><i class="fas fa-desktop"></i> Desktop</h4>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span>C# / .NET</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width:75%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span>WinForm</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width:70%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span>SQL Server</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width:65%"></div></div>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="skill-card">
-                    <i class="fab fa-js"></i>
-                    <h4>JavaScript</h4>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
-                </div>
-
-                <div class="skill-card">
-                    <i class="fab fa-java"></i>
-                    <h4>Java</h4>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 65%"></div></div>
-                </div>
-
-                <div class="skill-card">
-                    <i class="fab fa-git-alt"></i>
-                    <h4>Git / GitHub</h4>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 70%"></div></div>
-                </div>
-
-                <div class="skill-card">
-                    <i class="fas fa-mobile-alt"></i>
-                    <h4>Responsive Design</h4>
-                    <div class="skill-bar"><div class="skill-progress" style="width: 75%"></div></div>
+                <div class="skill-group">
+                    <h4><i class="fas fa-tools"></i> Outils</h4>
+                    <div class="skill-items">
+                        <div class="skill-item">
+                            <span>Git / GitHub</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width:70%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Visual Studio</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width:80%"></div></div>
+                        </div>
+                        <div class="skill-item">
+                            <span>VS Code</span>
+                            <div class="skill-bar"><div class="skill-progress" style="width:85%"></div></div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- ==========================================
-    CONTACT
-    ========================================== -->
+    <!-- ========== CONTACT ========== -->
     <section id="contact">
         <div class="container">
-            <h2 class="section-title">Me contacter</h2>
+            <h2 class="section-title">Contact</h2>
             <div class="contact-content">
                 <p>
                     Intéressé par mon travail ? N'hésitez pas à me contacter 
-                    pour toute question, collaboration ou opportunité.
+                    pour toute question ou opportunité.
                 </p>
                 <div class="contact-links">
                     <a href="mailto:niainakevin17@gmail.com" class="contact-item">
@@ -297,7 +312,7 @@
                         <span>GitHub</span>
                     </a>
                     <a href="https://www.linkedin.com/in/naveloniaina-kevin-razafimandimby-99345a3b6" target="_blank" class="contact-item">
-                        <i class="fab fa-linkedin"></i>
+                        <i class="fab fa-linkedin-in"></i>
                         <span>LinkedIn</span>
                     </a>
                 </div>
@@ -305,16 +320,14 @@
         </div>
     </section>
 
-    <!-- ==========================================
-    FOOTER
-    ========================================== -->
+    <!-- ========== FOOTER ========== -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Kevin RAZAFIMANDIMBY. Tous droits réservés.</p>
+            <p>&copy; 2026 Kevin RAZAFIMANDIMBY</p>
             <div class="footer-social">
-                <a href="https://github.com/niainakevinDev" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/naveloniaina-kevin-razafimandimby-99345a3b6" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:niainakevin17@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/niainakevinDev" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/naveloniaina-kevin-razafimandimby-99345a3b6" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:niainakevin17@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
         </div>
     </footer>
