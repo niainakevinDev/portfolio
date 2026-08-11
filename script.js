@@ -1,7 +1,6 @@
-// ============================================
-// 📱 MENU MOBILE
-// ============================================
-
+// ==========================================
+// MENU MOBILE
+// ==========================================
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
@@ -17,10 +16,9 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
-// ============================================
-// 🧭 HEADER SCROLL
-// ============================================
-
+// ==========================================
+// HEADER SCROLL
+// ==========================================
 const header = document.querySelector('header');
 
 window.addEventListener('scroll', () => {
@@ -31,10 +29,9 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// ============================================
-// 📍 NAV ACTIVE
-// ============================================
-
+// ==========================================
+// NAV ACTIVE
+// ==========================================
 const sections = document.querySelectorAll('section[id]');
 const navItems = document.querySelectorAll('.nav-links a');
 
@@ -56,10 +53,9 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// ============================================
-// ✨ ANIMATION COMPÉTENCES
-// ============================================
-
+// ==========================================
+// SKILLS ANIMATION
+// ==========================================
 const skillBars = document.querySelectorAll('.skill-progress');
 
 const skillObserver = new IntersectionObserver((entries) => {
@@ -77,10 +73,9 @@ const skillObserver = new IntersectionObserver((entries) => {
 
 skillBars.forEach(bar => skillObserver.observe(bar));
 
-// ============================================
-// 💫 ANIMATION CARTES
-// ============================================
-
+// ==========================================
+// CARDS ANIMATION
+// ==========================================
 const cards = document.querySelectorAll('.project-card, .skill-group');
 
 const cardObserver = new IntersectionObserver((entries) => {
@@ -99,10 +94,9 @@ cards.forEach(card => {
     cardObserver.observe(card);
 });
 
-// ============================================
-// 🎯 ANCRAGE DOUX
-// ============================================
-
+// ==========================================
+// SMOOTH SCROLL
+// ==========================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
