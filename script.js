@@ -3,6 +3,7 @@
 // ==========================================
 (function createParticles() {
     const container = document.getElementById('particles');
+    if (!container) return;
     const count = 30;
 
     for (let i = 0; i < count; i++) {
@@ -24,17 +25,19 @@
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navLinks.classList.toggle('open');
-});
-
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => {
-        hamburger.classList.remove('active');
-        navLinks.classList.remove('open');
+if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('open');
     });
-});
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('open');
+        });
+    });
+}
 
 // ==========================================
 // HEADER SCROLL
@@ -115,36 +118,74 @@ cards.forEach((card, index) => {
 });
 
 // ==========================================
-// STATS COUNTER ANIMATION
+// STATS COUNTER CORRIGÉ
 // ==========================================
 const statNumbers = document.querySelectorAll('.stat-number');
 
+function animateStats() {
+    statNumbers.forEach(el => {
+        const target = parseInt(el.getAttribute('data-count'));
+        if (isNaN(target) || target === 0) return;
+
+        let current = 0;
+        const increment = Math.ceil(target / 40);
+        const stepTime = 1200 / 40;
+
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                el.textContent = target;
+                clearInterval(timer);
+            } else {
+                el.textContent = current;
+            }
+        }, stepTime);
+    });
+}
+
+// Observer pour déclencher l'animation quand visible
 const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            const el = entry.target;
-            const target = parseInt(el.getAttribute('data-count'));
-            let current = 0;
-            const increment = Math.ceil(target / 40);
-            const duration = 1200;
-            const stepTime = duration / 40;
-
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    el.textContent = target;
-                    clearInterval(timer);
-                } else {
-                    el.textContent = current;
-                }
-            }, stepTime);
-
-            statsObserver.unobserve(el);
+            animateStats();
+            statsObserver.disconnect();
         }
     });
-}, { threshold: 0.5 });
+}, { threshold: 0.3 });
 
-statNumbers.forEach(stat => statsObserver.observe(stat));
+// Observer chaque élément pour déclencher l'animation
+statNumbers.forEach(stat => {
+    statsObserver.observe(stat);
+});
+
+// ==========================================
+// FALLBACK : FORCER L'AFFICHAGE DES VALEURS
+// ==========================================
+function forceStatsDisplay() {
+    statNumbers.forEach(el => {
+        // Si l'élément est encore à 0, on force l'affichage
+        if (el.textContent === '0' || el.textContent === '') {
+            const target = parseInt(el.getAttribute('data-count'));
+            if (!isNaN(target) && target > 0) {
+                el.textContent = target;
+            }
+        }
+    });
+}
+
+// Force l'affichage après 1.5 secondes si l'animation n'a pas fonctionné
+setTimeout(forceStatsDisplay, 1500);
+
+// Force l'affichage au scroll également (au cas où)
+window.addEventListener('scroll', () => {
+    const heroBottom = document.querySelector('.hero-bottom');
+    if (heroBottom) {
+        const rect = heroBottom.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            forceStatsDisplay();
+        }
+    }
+});
 
 // ==========================================
 // SMOOTH SCROLL
