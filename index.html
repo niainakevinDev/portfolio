@@ -7,22 +7,22 @@
     <meta name="description" content="Portfolio de Kevin Razafimandimby, développeur web et desktop – Étudiant à l'ENI." />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
 </head>
 <body>
 
     <!-- ========================================
     PARTICULES DE FOND
     ======================================== -->
-    <div id="particles"></div>
+    <div id="particles" aria-hidden="true"></div>
 
     <!-- ========================================
     HEADER
     ======================================== -->
-    <header>
+    <header role="banner">
         <div class="container">
-            <nav>
-                <a href="#" class="logo">Portfolio<span class="accent">.</span></a>
+            <nav role="navigation">
+                <a href="#" class="logo" aria-label="Accueil">K<span class="accent">.</span></a>
                 <ul class="nav-links">
                     <li><a href="#about">À propos</a></li>
                     <li><a href="#projects">Projets</a></li>
@@ -39,7 +39,7 @@
     <!-- ========================================
     HERO
     ======================================== -->
-    <section id="hero">
+    <section id="hero" aria-label="Présentation">
         <div class="container">
             <div class="hero-grid">
                 <div class="hero-text">
@@ -49,8 +49,7 @@
                     <p class="description">
                         Étudiant en <strong>2<sup>e</sup> année à l'ENI</strong>, je conçois des applications
                         fonctionnelles et élégantes. Je maîtrise aussi bien le
-                        <strong>développement web</strong> (HTML, CSS, JavaScript, PHP, Vue.js)
-                        que le <strong>desktop</strong> (C#, .NET, Java, SQL Server, PostgreSQL).
+                        <strong>développement web</strong> que le <strong>desktop</strong>.
                     </p>
                     <div class="hero-actions">
                         <a href="#projects" class="btn primary">
@@ -62,7 +61,8 @@
                     </div>
                 </div>
                 <div class="hero-visual">
-                    <div class="profile-card">
+                    <div class="profile-wrapper">
+                        <div class="profile-ring"></div>
                         <img src="profile.jpeg" alt="Kevin Razafimandimby" class="profile-img" />
                         <div class="profile-status">
                             <span class="dot"></span>
@@ -75,16 +75,18 @@
         <div class="hero-bottom">
             <div class="container">
                 <div class="hero-stats">
-                    <div>
-                        <span class="stat-number" data-count="6">6</span>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="6">0</span>
                         <span class="stat-label">Projets</span>
                     </div>
-                    <div>
-                        <span class="stat-number" data-count="2024">2024</span>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="2024">0</span>
                         <span class="stat-label">Bac</span>
                     </div>
-                    <div>
-                        <span class="stat-number" data-count="2">2</span>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="2">0</span>
                         <span class="stat-label">Années d'études</span>
                     </div>
                 </div>
@@ -95,9 +97,12 @@
     <!-- ========================================
     ABOUT
     ======================================== -->
-    <section id="about">
+    <section id="about" aria-label="À propos">
         <div class="container">
-            <h2 class="section-title">À propos</h2>
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">À propos</h2>
+            </div>
             <div class="about-grid">
                 <div class="about-text">
                     <p>
@@ -122,6 +127,7 @@
                     </div>
                 </div>
                 <div class="about-timeline">
+                    <div class="timeline-line"></div>
                     <div class="timeline-item">
                         <span class="year">2026</span>
                         <span class="event">2<sup>e</sup> année à l'ENI</span>
@@ -138,164 +144,155 @@
             </div>
         </div>
     </section>
-<!-- ========================================
-PROJECTS
-======================================== -->
-<section id="projects">
-    <div class="container">
-        <h2 class="section-title">Projets</h2>
-        <div class="projects-grid">
 
-            <!-- NexusShop - Plateforme E-commerce -->
-            <div class="project-card">
-                <div class="project-header">
-                    <span class="project-icon"><i class="fas fa-store"></i></span>
-                    <span class="project-tag">Web</span>
-                </div>
-                <h3>NexusShop</h3>
-                <p class="project-desc">
-                    <strong>Plateforme e-commerce professionnelle.</strong> Solution clé en main développée en PHP/MySQL
-                    avec système de paiement Mobile Money (Orange Money, MTN MoMo, Free Money, Wave, Moov Money).
-                    Tableau de bord administrateur complet avec gestion des produits, commandes, paiements
-                    et notifications en temps réel.
-                </p>
-                <div class="project-tech">
-                    <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>CSS3</span>
-                </div>
-                <div class="project-links">
-                    <a href="http://adamsff.xo.je/" target="_blank" class="btn small primary">
-                        <i class="fas fa-globe"></i> Site
-                    </a>
-                    
-                </div>
+    <!-- ========================================
+    PROJECTS
+    ======================================== -->
+    <section id="projects" aria-label="Projets">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">Projets</h2>
             </div>
+            <div class="projects-grid">
 
-            <!-- Java Project - Gestion de personnel et congé -->
-            <div class="project-card">
-                <div class="project-header">
-                    <span class="project-icon"><i class="fas fa-users-cog"></i></span>
-                    <span class="project-tag">Desktop</span>
-                </div>
-                <h3>Gestion de personnel &amp; congé</h3>
-                <p class="project-desc">
-                    <strong>Application de gestion des ressources humaines.</strong> Développée en Java avec NetBeans
-                    et PostgreSQL. Permet la gestion complète des employés (fiches, postes, départements),
-                    le suivi des demandes de congé (validation, historique, solde) et la génération
-                    de rapports statistiques.
-                </p>
-                <div class="project-tech">
-                    <span>Java</span><span>NetBeans</span><span>PostgreSQL</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/niainakevinDev/java_project" target="_blank" class="btn small outline">
-                        <i class="fab fa-github"></i> Code
-                    </a>
-                </div>
+                <!-- NexusShop -->
+                <article class="project-card">
+                    <div class="card-badge">Web</div>
+                    <div class="project-icon"><i class="fas fa-store"></i></div>
+                    <h3>NexusShop</h3>
+                    <p class="project-desc">
+                        <strong>Plateforme e-commerce professionnelle.</strong> Solution PHP/MySQL
+                        avec paiement Mobile Money (Orange Money, MTN MoMo, Wave).
+                        Dashboard administrateur complet.
+                    </p>
+                    <div class="project-tech">
+                        <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>CSS3</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="http://adamsff.xo.je/" target="_blank" class="btn small primary">
+                            <i class="fas fa-globe"></i> Site
+                        </a>
+                        <a href="https://github.com/niainakevinDev/nexusshop" target="_blank" class="btn small outline">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Java Project -->
+                <article class="project-card">
+                    <div class="card-badge">Desktop</div>
+                    <div class="project-icon"><i class="fas fa-users-cog"></i></div>
+                    <h3>Gestion de personnel &amp; congé</h3>
+                    <p class="project-desc">
+                        <strong>Application RH.</strong> Java, NetBeans et PostgreSQL.
+                        Gestion des employés, suivi des congés, rapports statistiques.
+                    </p>
+                    <div class="project-tech">
+                        <span>Java</span><span>NetBeans</span><span>PostgreSQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/niainakevinDev/java_project" target="_blank" class="btn small outline">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Mini-Doodle -->
+                <article class="project-card">
+                    <div class="card-badge">Desktop</div>
+                    <div class="project-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Mini-Doodle</h3>
+                    <p class="project-desc">
+                        <strong>Gestion de cours en ligne.</strong> C#, .NET, WinForm et SQL Server.
+                        Étudiants, matières, notes et emplois du temps.
+                    </p>
+                    <div class="project-tech">
+                        <span>C#</span><span>.NET</span><span>WinForm</span><span>SQL Server</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/niainakevinDev/Mini-Doodle" target="_blank" class="btn small outline">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Tic-Tac-Toe -->
+                <article class="project-card">
+                    <div class="card-badge">Web</div>
+                    <div class="project-icon"><i class="fas fa-chess-board"></i></div>
+                    <h3>Tic-Tac-Toe</h3>
+                    <p class="project-desc">
+                        <strong>Jeu de morpion moderne.</strong> Interface épurée, animations fluides,
+                        scores en direct et fonction d'annulation.
+                    </p>
+                    <div class="project-tech">
+                        <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://niainakevindev.github.io/tictactoe/" target="_blank" class="btn small primary">
+                            <i class="fas fa-play"></i> Démo
+                        </a>
+                        <a href="https://github.com/niainakevinDev/tictactoe" target="_blank" class="btn small outline">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Puissance 4 -->
+                <article class="project-card">
+                    <div class="card-badge">Web</div>
+                    <div class="project-icon"><i class="fas fa-bullseye"></i></div>
+                    <h3>Puissance 4</h3>
+                    <p class="project-desc">
+                        <strong>Jeu de stratégie avec IA.</strong> Minimax avec élagage alpha-bêta.
+                        Mode deux joueurs ou contre l'IA.
+                    </p>
+                    <div class="project-tech">
+                        <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Minimax</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://niainakevindev.github.io/Puissance4/" target="_blank" class="btn small primary">
+                            <i class="fas fa-play"></i> Démo
+                        </a>
+                        <a href="https://github.com/niainakevinDev/Puissance4" target="_blank" class="btn small outline">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Gestion caisse -->
+                <article class="project-card">
+                    <div class="card-badge">Web</div>
+                    <div class="project-icon"><i class="fas fa-church"></i></div>
+                    <h3>Gestion de caisse d'église</h3>
+                    <p class="project-desc">
+                        <strong>Application web de gestion financière.</strong> Suivi des offrandes,
+                        dépenses, membres et rapports détaillés.
+                    </p>
+                    <div class="project-tech">
+                        <span>PHP</span><span>Web</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://gestioncaisseeglise.freepage.cc" target="_blank" class="btn small primary">
+                            <i class="fas fa-globe"></i> Site
+                        </a>
+                    </div>
+                </article>
+
             </div>
-
-            <!-- Mini-Doodle -->
-            <div class="project-card">
-                <div class="project-header">
-                    <span class="project-icon"><i class="fas fa-graduation-cap"></i></span>
-                    <span class="project-tag">Desktop</span>
-                </div>
-                <h3>Mini-Doodle</h3>
-                <p class="project-desc">
-                    <strong>Gestion de cours en ligne.</strong> C#, .NET et WinForm.
-                    Gestion des étudiants, matières, notes et emplois du temps.
-                    Interface ergonomique et reporting intégré.
-                </p>
-                <div class="project-tech">
-                    <span>C#</span><span>.NET</span><span>WinForm</span><span>SQL Server</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://github.com/niainakevinDev/Mini-Doodle" target="_blank" class="btn small outline">
-                        <i class="fab fa-github"></i> Code
-                    </a>
-                </div>
-            </div>
-
-            <!-- Tic-Tac-Toe -->
-            <div class="project-card">
-                <div class="project-header">
-                    <span class="project-icon"><i class="fas fa-chess-board"></i></span>
-                    <span class="project-tag">Web</span>
-                </div>
-                <h3>Tic-Tac-Toe</h3>
-                <p class="project-desc">
-                    <strong>Jeu de morpion moderne.</strong> Interface épurée, animations fluides,
-                    scores en direct, fonction d'annulation et confettis de victoire.
-                    Pour deux joueurs sur le même écran.
-                </p>
-                <div class="project-tech">
-                    <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://niainakevindev.github.io/tictactoe/" target="_blank" class="btn small primary">
-                        <i class="fas fa-play"></i> Démo
-                    </a>
-                    <a href="https://github.com/niainakevinDev/tictactoe" target="_blank" class="btn small outline">
-                        <i class="fab fa-github"></i> Code
-                    </a>
-                </div>
-            </div>
-
-            <!-- Puissance 4 -->
-            <div class="project-card">
-                <div class="project-header">
-                    <span class="project-icon"><i class="fas fa-bullseye"></i></span>
-                    <span class="project-tag">Web</span>
-                </div>
-                <h3>Puissance 4</h3>
-                <p class="project-desc">
-                    <strong>Jeu de stratégie avec IA.</strong> Utilisation de l'algorithme Minimax
-                    avec élagage alpha-bêta. Mode deux joueurs ou contre une IA
-                    à trois niveaux de difficulté.
-                </p>
-                <div class="project-tech">
-                    <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Minimax</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://niainakevindev.github.io/Puissance4/" target="_blank" class="btn small primary">
-                        <i class="fas fa-play"></i> Démo
-                    </a>
-                    <a href="https://github.com/niainakevinDev/Puissance4" target="_blank" class="btn small outline">
-                        <i class="fab fa-github"></i> Code
-                    </a>
-                </div>
-            </div>
-
-            <!-- Gestion de caisse d'église -->
-            <div class="project-card">
-                <div class="project-header">
-                    <span class="project-icon"><i class="fas fa-church"></i></span>
-                    <span class="project-tag">Web</span>
-                </div>
-                <h3>Gestion de caisse d'église</h3>
-                <p class="project-desc">
-                    <strong>Application web de gestion financière.</strong> Suivi des offrandes,
-                    dépenses, membres et génération de rapports détaillés.
-                    Solution pratique pour églises et associations.
-                </p>
-                <div class="project-tech">
-                    <span>PHP</span><span>Web</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://gestioncaisseeglise.freepage.cc" target="_blank" class="btn small primary">
-                        <i class="fas fa-globe"></i> Site
-                    </a>
-                </div>
-            </div>
-
         </div>
-    </div>
-</section>
+    </section>
+
     <!-- ========================================
     SKILLS
     ======================================== -->
-    <section id="skills">
+    <section id="skills" aria-label="Compétences">
         <div class="container">
-            <h2 class="section-title">Compétences</h2>
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">Compétences</h2>
+            </div>
             <div class="skills-grid">
 
                 <div class="skill-group">
@@ -374,7 +371,7 @@ PROJECTS
                             <div class="skill-bar"><div class="skill-progress" style="width:70%"></div></div>
                         </div>
                         <div class="skill-item">
-                            <span>Visual Studio / NetBeans</span>
+                            <span>VS / NetBeans</span>
                             <div class="skill-bar"><div class="skill-progress" style="width:80%"></div></div>
                         </div>
                         <div class="skill-item">
@@ -391,9 +388,12 @@ PROJECTS
     <!-- ========================================
     CONTACT
     ======================================== -->
-    <section id="contact">
+    <section id="contact" aria-label="Contact">
         <div class="container">
-            <h2 class="section-title">Contact</h2>
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">Contact</h2>
+            </div>
             <div class="contact-content">
                 <p>
                     Intéressé par mon travail ? N'hésitez pas à me contacter
@@ -420,7 +420,7 @@ PROJECTS
     <!-- ========================================
     FOOTER
     ======================================== -->
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <p>&copy; 2026 Kevin Razafimandimby</p>
             <div class="footer-social">
