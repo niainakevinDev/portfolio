@@ -118,7 +118,7 @@ cards.forEach((card, index) => {
 });
 
 // ==========================================
-// STATS COUNTER CORRIGÉ
+// STATS COUNTER (CORRIGÉ)
 // ==========================================
 const statNumbers = document.querySelectorAll('.stat-number');
 
@@ -184,6 +184,103 @@ window.addEventListener('scroll', () => {
         if (rect.top < window.innerHeight && rect.bottom > 0) {
             forceStatsDisplay();
         }
+    }
+});
+
+// ==========================================
+// GALERIE - NEXUSSHOP
+// ==========================================
+
+// Liste des captures d'écran
+const nexusShopScreenshots = [
+    { src: 'ConnexionNexusShop.png', label: 'Page de connexion' },
+    { src: 'confirmationPayment.png', label: 'Confirmation de paiement' },
+    { src: 'DashboardAdmin.png', label: 'Dashboard administrateur' },
+    { src: 'Facture.png', label: 'Facture client' },
+    { src: 'InfoLivraison.png', label: 'Informations de livraison' },
+    { src: 'ListeCommandeAdmin.png', label: 'Liste des commandes (admin)' },
+    { src: 'numeroVendeur.png', label: 'Numéro du vendeur' },
+    { src: 'PaiementEnAttente.png', label: 'Paiement en attente' },
+    { src: 'ProfileClient.png', label: 'Profil client' }
+];
+
+// Éléments DOM
+const modal = document.getElementById('gallery-modal');
+const galleryGrid = document.getElementById('gallery-grid');
+const galleryTitle = document.getElementById('gallery-title');
+const galleryCounter = document.getElementById('gallery-counter');
+const closeBtn = document.querySelector('.modal-close');
+
+// Ouvrir la galerie
+function openGallery(projectName) {
+    if (projectName === 'nexusshop') {
+        // Remplir la grille
+        galleryGrid.innerHTML = '';
+        nexusShopScreenshots.forEach((img, index) => {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.innerHTML = `
+                <img src="${img.src}" alt="${img.label}" loading="lazy" />
+                <span class="gallery-item-label">${img.label}</span>
+            `;
+            // Clic sur une image -> l'ouvrir en grand
+            item.addEventListener('click', () => {
+                window.open(img.src, '_blank');
+            });
+            galleryGrid.appendChild(item);
+        });
+
+        galleryTitle.textContent = 'NexusShop - Captures d\'écran';
+        galleryCounter.textContent = `${nexusShopScreenshots.length} captures`;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// Fermer la galerie
+function closeGallery() {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Boutons de la galerie
+document.querySelectorAll('.gallery-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const project = btn.dataset.project;
+        openGallery(project);
+    });
+});
+
+// Clic sur l'aperçu du projet pour ouvrir la galerie
+document.querySelectorAll('.project-preview').forEach(preview => {
+    preview.addEventListener('click', () => {
+        // Trouver la carte parente
+        const card = preview.closest('.project-card');
+        if (card) {
+            const title = card.querySelector('h3')?.textContent || '';
+            if (title.includes('NexusShop')) {
+                openGallery('nexusshop');
+            }
+        }
+    });
+});
+
+// Fermeture
+if (closeBtn) {
+    closeBtn.addEventListener('click', closeGallery);
+}
+
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        closeGallery();
+    }
+});
+
+// Échap pour fermer
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeGallery();
     }
 });
 
