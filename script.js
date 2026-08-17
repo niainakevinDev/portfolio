@@ -153,7 +153,6 @@ const statsObserver = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.3 });
 
-// Observer chaque élément pour déclencher l'animation
 statNumbers.forEach(stat => {
     statsObserver.observe(stat);
 });
@@ -163,7 +162,6 @@ statNumbers.forEach(stat => {
 // ==========================================
 function forceStatsDisplay() {
     statNumbers.forEach(el => {
-        // Si l'élément est encore à 0, on force l'affichage
         if (el.textContent === '0' || el.textContent === '') {
             const target = parseInt(el.getAttribute('data-count'));
             if (!isNaN(target) && target > 0) {
@@ -173,10 +171,8 @@ function forceStatsDisplay() {
     });
 }
 
-// Force l'affichage après 1.5 secondes si l'animation n'a pas fonctionné
 setTimeout(forceStatsDisplay, 1500);
 
-// Force l'affichage au scroll également (au cas où)
 window.addEventListener('scroll', () => {
     const heroBottom = document.querySelector('.hero-bottom');
     if (heroBottom) {
@@ -188,7 +184,7 @@ window.addEventListener('scroll', () => {
 });
 
 // ==========================================
-// GALERIE - NEXUSSHOP
+// GALERIE - NEXUSSHOP (CORRIGÉ)
 // ==========================================
 
 // Liste des captures d'écran
@@ -211,19 +207,18 @@ const galleryTitle = document.getElementById('gallery-title');
 const galleryCounter = document.getElementById('gallery-counter');
 const closeBtn = document.querySelector('.modal-close');
 
-// Ouvrir la galerie
+// Fonction pour ouvrir la galerie
 function openGallery(projectName) {
     if (projectName === 'nexusshop') {
-        // Remplir la grille
         galleryGrid.innerHTML = '';
-        nexusShopScreenshots.forEach((img, index) => {
+        
+        nexusShopScreenshots.forEach((img) => {
             const item = document.createElement('div');
             item.className = 'gallery-item';
             item.innerHTML = `
                 <img src="${img.src}" alt="${img.label}" loading="lazy" />
                 <span class="gallery-item-label">${img.label}</span>
             `;
-            // Clic sur une image -> l'ouvrir en grand
             item.addEventListener('click', () => {
                 window.open(img.src, '_blank');
             });
@@ -237,36 +232,63 @@ function openGallery(projectName) {
     }
 }
 
-// Fermer la galerie
+// Fonction pour fermer la galerie
 function closeGallery() {
     modal.classList.remove('active');
     document.body.style.overflow = '';
 }
 
-// Boutons de la galerie
+// --- Événements pour ouvrir la galerie ---
+
+// 1. Boutons "Captures" dans les liens du projet
 document.querySelectorAll('.gallery-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
+    btn.addEventListener('click', function(e) {
         e.stopPropagation();
-        const project = btn.dataset.project;
-        openGallery(project);
+        e.preventDefault();
+        const project = this.getAttribute('data-project');
+        if (project === 'nexusshop') {
+            openGallery('nexusshop');
+        }
     });
 });
 
-// Clic sur l'aperçu du projet pour ouvrir la galerie
+// 2. Clic sur l'aperçu (project-preview)
 document.querySelectorAll('.project-preview').forEach(preview => {
-    preview.addEventListener('click', () => {
-        // Trouver la carte parente
-        const card = preview.closest('.project-card');
+    preview.addEventListener('click', function(e) {
+        // Évite de déclencher si on clique sur le bouton à l'intérieur
+        if (e.target.closest('.gallery-btn')) return;
+        
+        const card = this.closest('.project-card');
         if (card) {
-            const title = card.querySelector('h3')?.textContent || '';
-            if (title.includes('NexusShop')) {
+            const title = card.querySelector('h3');
+            if (title && title.textContent.includes('NexusShop')) {
                 openGallery('nexusshop');
             }
         }
     });
 });
 
-// Fermeture
+// 3. Vérification supplémentaire : au chargement, on attache aussi les événements
+// pour les boutons qui pourraient être ajoutés dynamiquement
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.gallery-btn').forEach(btn => {
+        // On évite les doublons en vérifiant si l'événement est déjà attaché
+        if (!btn._listenerAttached) {
+            btn._listenerAttached = true;
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                e.preventDefault();
+                const project = this.getAttribute('data-project');
+                if (project === 'nexusshop') {
+                    openGallery('nexusshop');
+                }
+            });
+        }
+    });
+});
+
+// --- Événements pour fermer la galerie ---
+
 if (closeBtn) {
     closeBtn.addEventListener('click', closeGallery);
 }
@@ -277,7 +299,6 @@ modal.addEventListener('click', (e) => {
     }
 });
 
-// Échap pour fermer
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('active')) {
         closeGallery();
@@ -299,3 +320,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// Petit message dans la console pour confirmer le chargement
+console.log('✅ Portfolio chargé avec succès !');
+console.log('📸 Galerie NexusShop disponible avec ' + nexusShopScreenshots.length + ' captures.');
