@@ -183,7 +183,7 @@ window.addEventListener('scroll', () => {
 });
 
 // ==========================================
-// GALERIE - PROJETS
+// GALERIE - PROJETS (VERSION GLOBALE)
 // ==========================================
 
 // Captures NexusShop
@@ -216,9 +216,9 @@ const galleryTitle = document.getElementById('gallery-title');
 const galleryCounter = document.getElementById('gallery-counter');
 const closeBtn = document.querySelector('.modal-close');
 
-// Fonction pour ouvrir la galerie
+// Fonction GLOBALE pour ouvrir la galerie (accessible depuis onclick)
 function openGallery(projectName) {
-    console.log('Ouverture de la galerie pour :', projectName);
+    console.log('🔓 Ouverture galerie :', projectName);
     
     let screenshots = [];
     let title = '';
@@ -230,7 +230,12 @@ function openGallery(projectName) {
         screenshots = gestionPersonnelScreenshots;
         title = 'Gestion du personnel & congé - Captures d\'écran';
     } else {
-        console.warn('Projet inconnu :', projectName);
+        console.warn('⚠️ Projet inconnu :', projectName);
+        return;
+    }
+
+    if (!modal) {
+        console.error('❌ Modale introuvable !');
         return;
     }
 
@@ -257,42 +262,10 @@ function openGallery(projectName) {
 
 // Fonction pour fermer la galerie
 function closeGallery() {
+    if (!modal) return;
     modal.classList.remove('active');
     document.body.style.overflow = '';
 }
-
-// --- Événements pour ouvrir la galerie ---
-
-// 1. Boutons "Captures"
-document.querySelectorAll('.gallery-btn').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        e.preventDefault();
-        const project = this.getAttribute('data-project');
-        console.log('Clic sur bouton Captures :', project);
-        openGallery(project);
-    });
-});
-
-// 2. Clic sur l'aperçu du projet
-document.querySelectorAll('.project-preview').forEach(preview => {
-    preview.addEventListener('click', function(e) {
-        if (e.target.closest('.gallery-btn')) return;
-        
-        const card = this.closest('.project-card');
-        if (card) {
-            const title = card.querySelector('h3');
-            if (title) {
-                const text = title.textContent;
-                if (text.includes('NexusShop')) {
-                    openGallery('nexusshop');
-                } else if (text.includes('Gestion du personnel') || text.includes('Gestion de personnel')) {
-                    openGallery('gestion-personnel');
-                }
-            }
-        }
-    });
-});
 
 // --- Événements pour fermer ---
 
@@ -300,14 +273,16 @@ if (closeBtn) {
     closeBtn.addEventListener('click', closeGallery);
 }
 
-modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-        closeGallery();
-    }
-});
+if (modal) {
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeGallery();
+        }
+    });
+}
 
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal.classList.contains('active')) {
+    if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
         closeGallery();
     }
 });
@@ -332,3 +307,4 @@ console.log('✅ Portfolio chargé avec succès !');
 console.log('📸 Galeries disponibles :');
 console.log('   - NexusShop (9 captures)');
 console.log('   - Gestion du personnel & congé (6 captures)');
+console.log('💡 Utilisez onclick="openGallery(\'nom-du-projet\')" pour ouvrir une galerie.');
