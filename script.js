@@ -218,6 +218,8 @@ const closeBtn = document.querySelector('.modal-close');
 
 // Fonction pour ouvrir la galerie
 function openGallery(projectName) {
+    console.log('Ouverture de la galerie pour :', projectName);
+    
     let screenshots = [];
     let title = '';
 
@@ -228,6 +230,7 @@ function openGallery(projectName) {
         screenshots = gestionPersonnelScreenshots;
         title = 'Gestion du personnel & congé - Captures d\'écran';
     } else {
+        console.warn('Projet inconnu :', projectName);
         return;
     }
 
@@ -260,16 +263,18 @@ function closeGallery() {
 
 // --- Événements pour ouvrir la galerie ---
 
+// 1. Boutons "Captures"
 document.querySelectorAll('.gallery-btn').forEach(btn => {
     btn.addEventListener('click', function(e) {
         e.stopPropagation();
         e.preventDefault();
         const project = this.getAttribute('data-project');
+        console.log('Clic sur bouton Captures :', project);
         openGallery(project);
     });
 });
 
-// Clic sur l'aperçu du projet
+// 2. Clic sur l'aperçu du projet
 document.querySelectorAll('.project-preview').forEach(preview => {
     preview.addEventListener('click', function(e) {
         if (e.target.closest('.gallery-btn')) return;
@@ -278,9 +283,10 @@ document.querySelectorAll('.project-preview').forEach(preview => {
         if (card) {
             const title = card.querySelector('h3');
             if (title) {
-                if (title.textContent.includes('NexusShop')) {
+                const text = title.textContent;
+                if (text.includes('NexusShop')) {
                     openGallery('nexusshop');
-                } else if (title.textContent.includes('Gestion du personnel')) {
+                } else if (text.includes('Gestion du personnel') || text.includes('Gestion de personnel')) {
                     openGallery('gestion-personnel');
                 }
             }
@@ -323,4 +329,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 console.log('✅ Portfolio chargé avec succès !');
-console.log('📸 Galeries disponibles : NexusShop (9 captures), Gestion personnel (6 captures)');
+console.log('📸 Galeries disponibles :');
+console.log('   - NexusShop (9 captures)');
+console.log('   - Gestion du personnel & congé (6 captures)');
