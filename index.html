@@ -22,7 +22,7 @@
     <header role="banner">
         <div class="container">
             <nav role="navigation">
-                <a href="#" class="logo" aria-label="Accueil">K<span class="accent">.</span></a>
+                <a href="#" class="logo">K<span class="accent">.</span></a>
                 <ul class="nav-links">
                     <li><a href="#about">À propos</a></li>
                     <li><a href="#projects">Projets</a></li>
@@ -159,12 +159,23 @@
                 <!-- NexusShop -->
                 <article class="project-card">
                     <div class="card-badge">Web</div>
+                    
+                    <div class="project-preview">
+                        <img src="ConnexionNexusShop.png" alt="NexusShop - Page de connexion" class="project-thumbnail" />
+                        <div class="project-gallery-trigger">
+                            <span class="gallery-icon"><i class="fas fa-images"></i></span>
+                            <span class="gallery-text">Voir les captures</span>
+                        </div>
+                    </div>
+
                     <div class="project-icon"><i class="fas fa-store"></i></div>
                     <h3>NexusShop</h3>
                     <p class="project-desc">
-                        <strong>Plateforme e-commerce professionnelle.</strong> Solution PHP/MySQL
-                        avec paiement Mobile Money (Orange Money, MTN MoMo, Wave).
-                        Dashboard administrateur complet.
+                        <strong>Plateforme e-commerce complète</strong> développée en PHP/MySQL avec 
+                        paiement Mobile Money (Orange Money, MTN MoMo, Free Money, Wave, Moov Money). 
+                        Intègre un <strong>dashboard administrateur</strong> complet, une gestion avancée des livraisons 
+                        (domicile, colis suivi, retrait en agence), un système de <strong>notifications en temps réel</strong>, 
+                        et une génération automatique de <strong>factures numérotées</strong>. Projet déployé et 100% fonctionnel.
                     </p>
                     <div class="project-tech">
                         <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>CSS3</span>
@@ -176,6 +187,9 @@
                         <a href="https://github.com/niainakevinDev/nexusshop" target="_blank" class="btn small outline">
                             <i class="fab fa-github"></i> Code
                         </a>
+                        <button class="btn small outline gallery-btn" data-project="nexusshop">
+                            <i class="fas fa-images"></i> Captures
+                        </button>
                     </div>
                 </article>
 
@@ -371,7 +385,7 @@
                             <div class="skill-bar"><div class="skill-progress" style="width:70%"></div></div>
                         </div>
                         <div class="skill-item">
-                            <span>VS / NetBeans</span>
+                            <span>Visual Studio / NetBeans</span>
                             <div class="skill-bar"><div class="skill-progress" style="width:80%"></div></div>
                         </div>
                         <div class="skill-item">
@@ -430,6 +444,28 @@
             </div>
         </div>
     </footer>
+
+    <!-- ========================================
+    GALERIE MODALE
+    ======================================== -->
+    <div id="gallery-modal" class="modal" role="dialog" aria-label="Galerie de captures" aria-hidden="true">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Fermer la galerie">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h3 id="gallery-title">NexusShop - Captures d'écran</h3>
+            </div>
+            <div class="modal-body">
+                <div class="gallery-grid" id="gallery-grid">
+                    <!-- Les images seront injectées par JavaScript -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span id="gallery-counter">1 / 9</span>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
