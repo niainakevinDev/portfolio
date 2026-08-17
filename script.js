@@ -118,7 +118,7 @@ cards.forEach((card, index) => {
 });
 
 // ==========================================
-// STATS COUNTER (CORRIGÉ)
+// STATS COUNTER
 // ==========================================
 const statNumbers = document.querySelectorAll('.stat-number');
 
@@ -143,7 +143,6 @@ function animateStats() {
     });
 }
 
-// Observer pour déclencher l'animation quand visible
 const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -158,7 +157,7 @@ statNumbers.forEach(stat => {
 });
 
 // ==========================================
-// FALLBACK : FORCER L'AFFICHAGE DES VALEURS
+// FALLBACK STATS
 // ==========================================
 function forceStatsDisplay() {
     statNumbers.forEach(el => {
@@ -184,10 +183,10 @@ window.addEventListener('scroll', () => {
 });
 
 // ==========================================
-// GALERIE - NEXUSSHOP (CORRIGÉ)
+// GALERIE - PROJETS
 // ==========================================
 
-// Liste des captures d'écran
+// Captures NexusShop
 const nexusShopScreenshots = [
     { src: 'ConnexionNexusShop.png', label: 'Page de connexion' },
     { src: 'confirmationPayment.png', label: 'Confirmation de paiement' },
@@ -200,6 +199,16 @@ const nexusShopScreenshots = [
     { src: 'ProfileClient.png', label: 'Profil client' }
 ];
 
+// Captures Gestion du personnel & congé
+const gestionPersonnelScreenshots = [
+    { src: 'Employer.png', label: 'Liste des employés' },
+    { src: 'conge.png', label: 'Gestion des congés' },
+    { src: 'Fiche_et_abscence.png', label: "Fiche d'absence" },
+    { src: 'ficheDePaye.png', label: 'Fiche de paie' },
+    { src: 'Pointage.png', label: 'Suivi des pointages' },
+    { src: 'Recherche.png', label: 'Recherche avancée' }
+];
+
 // Éléments DOM
 const modal = document.getElementById('gallery-modal');
 const galleryGrid = document.getElementById('gallery-grid');
@@ -209,27 +218,38 @@ const closeBtn = document.querySelector('.modal-close');
 
 // Fonction pour ouvrir la galerie
 function openGallery(projectName) {
-    if (projectName === 'nexusshop') {
-        galleryGrid.innerHTML = '';
-        
-        nexusShopScreenshots.forEach((img) => {
-            const item = document.createElement('div');
-            item.className = 'gallery-item';
-            item.innerHTML = `
-                <img src="${img.src}" alt="${img.label}" loading="lazy" />
-                <span class="gallery-item-label">${img.label}</span>
-            `;
-            item.addEventListener('click', () => {
-                window.open(img.src, '_blank');
-            });
-            galleryGrid.appendChild(item);
-        });
+    let screenshots = [];
+    let title = '';
 
-        galleryTitle.textContent = 'NexusShop - Captures d\'écran';
-        galleryCounter.textContent = `${nexusShopScreenshots.length} captures`;
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+    if (projectName === 'nexusshop') {
+        screenshots = nexusShopScreenshots;
+        title = 'NexusShop - Captures d\'écran';
+    } else if (projectName === 'gestion-personnel') {
+        screenshots = gestionPersonnelScreenshots;
+        title = 'Gestion du personnel & congé - Captures d\'écran';
+    } else {
+        return;
     }
+
+    galleryGrid.innerHTML = '';
+    
+    screenshots.forEach((img) => {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.innerHTML = `
+            <img src="${img.src}" alt="${img.label}" loading="lazy" />
+            <span class="gallery-item-label">${img.label}</span>
+        `;
+        item.addEventListener('click', () => {
+            window.open(img.src, '_blank');
+        });
+        galleryGrid.appendChild(item);
+    });
+
+    galleryTitle.textContent = title;
+    galleryCounter.textContent = `${screenshots.length} captures`;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
 }
 
 // Fonction pour fermer la galerie
@@ -240,54 +260,35 @@ function closeGallery() {
 
 // --- Événements pour ouvrir la galerie ---
 
-// 1. Boutons "Captures" dans les liens du projet
 document.querySelectorAll('.gallery-btn').forEach(btn => {
     btn.addEventListener('click', function(e) {
         e.stopPropagation();
         e.preventDefault();
         const project = this.getAttribute('data-project');
-        if (project === 'nexusshop') {
-            openGallery('nexusshop');
-        }
+        openGallery(project);
     });
 });
 
-// 2. Clic sur l'aperçu (project-preview)
+// Clic sur l'aperçu du projet
 document.querySelectorAll('.project-preview').forEach(preview => {
     preview.addEventListener('click', function(e) {
-        // Évite de déclencher si on clique sur le bouton à l'intérieur
         if (e.target.closest('.gallery-btn')) return;
         
         const card = this.closest('.project-card');
         if (card) {
             const title = card.querySelector('h3');
-            if (title && title.textContent.includes('NexusShop')) {
-                openGallery('nexusshop');
+            if (title) {
+                if (title.textContent.includes('NexusShop')) {
+                    openGallery('nexusshop');
+                } else if (title.textContent.includes('Gestion du personnel')) {
+                    openGallery('gestion-personnel');
+                }
             }
         }
     });
 });
 
-// 3. Vérification supplémentaire : au chargement, on attache aussi les événements
-// pour les boutons qui pourraient être ajoutés dynamiquement
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.gallery-btn').forEach(btn => {
-        // On évite les doublons en vérifiant si l'événement est déjà attaché
-        if (!btn._listenerAttached) {
-            btn._listenerAttached = true;
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                e.preventDefault();
-                const project = this.getAttribute('data-project');
-                if (project === 'nexusshop') {
-                    openGallery('nexusshop');
-                }
-            });
-        }
-    });
-});
-
-// --- Événements pour fermer la galerie ---
+// --- Événements pour fermer ---
 
 if (closeBtn) {
     closeBtn.addEventListener('click', closeGallery);
@@ -321,6 +322,5 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Petit message dans la console pour confirmer le chargement
 console.log('✅ Portfolio chargé avec succès !');
-console.log('📸 Galerie NexusShop disponible avec ' + nexusShopScreenshots.length + ' captures.');
+console.log('📸 Galeries disponibles : NexusShop (9 captures), Gestion personnel (6 captures)');
