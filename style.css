@@ -677,7 +677,7 @@ section {
 }
 
 /* ==========================================
-   PROJECT PREVIEW / THUMBNAIL
+   PROJECT PREVIEW / THUMBNAIL - CORRIGÉ
    ========================================== */
 .project-preview {
     position: relative;
@@ -690,6 +690,7 @@ section {
     border: 1px solid rgba(255, 255, 255, 0.04);
     cursor: pointer;
     transition: all 0.3s ease;
+    z-index: 1;
 }
 
 .project-preview:hover {
@@ -721,6 +722,7 @@ section {
     font-weight: 500;
     transition: all 0.3s ease;
     pointer-events: none;
+    z-index: 5;
 }
 
 .project-preview:hover .project-gallery-trigger {
@@ -741,6 +743,9 @@ section {
     letter-spacing: 0.3px;
 }
 
+/* ==========================================
+   CARD BADGE - CORRIGÉ
+   ========================================== */
 .card-badge {
     position: absolute;
     top: 16px;
@@ -749,11 +754,13 @@ section {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    padding: 3px 12px;
+    padding: 4px 14px;
     border-radius: 20px;
-    background: rgba(37, 99, 235, 0.08);
+    background: rgba(37, 99, 235, 0.15);
     color: #2563eb;
-    border: 1px solid rgba(37, 99, 235, 0.06);
+    border: 1px solid rgba(37, 99, 235, 0.1);
+    z-index: 10;
+    backdrop-filter: blur(4px);
 }
 
 .project-icon {
