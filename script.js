@@ -227,8 +227,10 @@ const galleryTitle = document.getElementById('gallery-title');
 const galleryCounter = document.getElementById('gallery-counter');
 const closeBtn = document.querySelector('.modal-close');
 
-// Fonction GLOBALE pour ouvrir la galerie
-function openGallery(projectName) {
+// ==========================================
+// FONCTION GLOBALE pour ouvrir la galerie
+// ==========================================
+window.openGallery = function(projectName) {
     console.log('🔓 Ouverture galerie :', projectName);
     
     let screenshots = [];
@@ -272,7 +274,7 @@ function openGallery(projectName) {
     galleryCounter.textContent = `${screenshots.length} captures`;
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
-}
+};
 
 // Fonction pour fermer la galerie
 function closeGallery() {
