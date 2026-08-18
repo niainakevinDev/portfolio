@@ -183,7 +183,7 @@ window.addEventListener('scroll', () => {
 });
 
 // ==========================================
-// GALERIE - PROJETS (VERSION GLOBALE)
+// GALERIE - PROJETS (3 GALERIES)
 // ==========================================
 
 // Captures NexusShop
@@ -209,6 +209,17 @@ const gestionPersonnelScreenshots = [
     { src: 'Recherche.png', label: 'Recherche avancée' }
 ];
 
+// Captures Gestion de caisse d'église
+const caisseEgliseScreenshots = [
+    { src: 'ConnexionCaisse.png', label: 'Page de connexion' },
+    { src: 'Eglise.png', label: 'Gestion des églises' },
+    { src: 'Entrer.png', label: 'Saisie des entrées' },
+    { src: 'Mouvement.png', label: 'Consultation des mouvements' },
+    { src: 'RechercheCaisse.png', label: 'Recherche avancée' },
+    { src: 'Sortie.png', label: 'Saisie des sorties' },
+    { src: 'Tableau.png', label: 'Tableau de bord' }
+];
+
 // Éléments DOM
 const modal = document.getElementById('gallery-modal');
 const galleryGrid = document.getElementById('gallery-grid');
@@ -216,7 +227,7 @@ const galleryTitle = document.getElementById('gallery-title');
 const galleryCounter = document.getElementById('gallery-counter');
 const closeBtn = document.querySelector('.modal-close');
 
-// Fonction GLOBALE pour ouvrir la galerie (accessible depuis onclick)
+// Fonction GLOBALE pour ouvrir la galerie
 function openGallery(projectName) {
     console.log('🔓 Ouverture galerie :', projectName);
     
@@ -229,6 +240,9 @@ function openGallery(projectName) {
     } else if (projectName === 'gestion-personnel') {
         screenshots = gestionPersonnelScreenshots;
         title = 'Gestion du personnel & congé - Captures d\'écran';
+    } else if (projectName === 'caisse-eglise') {
+        screenshots = caisseEgliseScreenshots;
+        title = 'Gestion de caisse d\'église - Captures d\'écran';
     } else {
         console.warn('⚠️ Projet inconnu :', projectName);
         return;
@@ -307,4 +321,5 @@ console.log('✅ Portfolio chargé avec succès !');
 console.log('📸 Galeries disponibles :');
 console.log('   - NexusShop (9 captures)');
 console.log('   - Gestion du personnel & congé (6 captures)');
+console.log('   - Gestion de caisse d\'église (7 captures)');
 console.log('💡 Utilisez onclick="openGallery(\'nom-du-projet\')" pour ouvrir une galerie.');
