@@ -183,7 +183,7 @@ window.addEventListener('scroll', () => {
 });
 
 // ==========================================
-// GALERIE - PROJETS (3 GALERIES)
+// GALERIE - PROJETS (4 GALERIES)
 // ==========================================
 
 // Captures NexusShop
@@ -207,6 +207,18 @@ const gestionPersonnelScreenshots = [
     { src: 'ficheDePaye.png', label: 'Fiche de paie' },
     { src: 'Pointage.png', label: 'Suivi des pointages' },
     { src: 'Recherche.png', label: 'Recherche avancée' }
+];
+
+// Captures Mini-Doodle
+const miniDoodleScreenshots = [
+    { src: 'ConnexionDoodle.png', label: 'Page de connexion' },
+    { src: 'CertificatDoodle.png', label: 'Certificat de formation' },
+    { src: 'EtudiantDoodle.png', label: 'Gestion des étudiants' },
+    { src: 'InscriptionDoodle.png', label: 'Inscription au cours' },
+    { src: 'LireCours.png', label: 'Lecture des cours' },
+    { src: 'OngletQuiz.png', label: 'Onglet Quiz' },
+    { src: 'PasserQuiz.png', label: 'Passer un quiz' },
+    { src: 'ProgressionDoodle.png', label: 'Suivi de progression' }
 ];
 
 // Captures Gestion de caisse d'église
@@ -242,6 +254,9 @@ window.openGallery = function(projectName) {
     } else if (projectName === 'gestion-personnel') {
         screenshots = gestionPersonnelScreenshots;
         title = 'Gestion du personnel & congé - Captures d\'écran';
+    } else if (projectName === 'mini-doodle') {
+        screenshots = miniDoodleScreenshots;
+        title = 'Mini-Doodle - Captures d\'écran';
     } else if (projectName === 'caisse-eglise') {
         screenshots = caisseEgliseScreenshots;
         title = 'Gestion de caisse d\'église - Captures d\'écran';
@@ -319,6 +334,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+console.log('✅ Portfolio chargé avec succès !');
+console.log('📸 Galeries disponibles :');
+console.log('   - NexusShop (9 captures)');
+console.log('   - Gestion du personnel & congé (6 captures)');
+console.log('   - Mini-Doodle (8 captures)');
+console.log('   - Gestion de caisse d\'église (7 captures)');
+console.log('💡 Utilisez onclick="openGallery(\'nom-du-projet\')" pour ouvrir une galerie.');
 console.log('✅ Portfolio chargé avec succès !');
 console.log('📸 Galeries disponibles :');
 console.log('   - NexusShop (9 captures)');
