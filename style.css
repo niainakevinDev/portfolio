@@ -677,7 +677,7 @@ section {
 }
 
 /* ==========================================
-   PROJECT PREVIEW / THUMBNAIL - CORRIGÉ
+   PROJECT PREVIEW / THUMBNAIL
    ========================================== */
 .project-preview {
     position: relative;
@@ -743,9 +743,6 @@ section {
     letter-spacing: 0.3px;
 }
 
-/* ==========================================
-   CARD BADGE - CORRIGÉ
-   ========================================== */
 .card-badge {
     position: absolute;
     top: 16px;
