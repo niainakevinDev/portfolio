@@ -334,6 +334,36 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// ==========================================
+// THEME CLAIR / SOMBRE
+// ==========================================
+
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = themeToggle.querySelector('i');
+
+// Vérifier le thème sauvegardé
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'light') {
+    document.body.classList.add('light-theme');
+    themeIcon.className = 'fas fa-sun';
+} else {
+    themeIcon.className = 'fas fa-moon';
+}
+
+// Basculer le thème
+themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('light-theme');
+    
+    // Changer l'icône
+    if (document.body.classList.contains('light-theme')) {
+        themeIcon.className = 'fas fa-sun';
+        localStorage.setItem('theme', 'light');
+    } else {
+        themeIcon.className = 'fas fa-moon';
+        localStorage.setItem('theme', 'dark');
+    }
+});
+
 console.log('✅ Portfolio chargé avec succès !');
 console.log('📸 Galeries disponibles :');
 console.log('   - NexusShop (9 captures)');
@@ -341,3 +371,4 @@ console.log('   - Gestion du personnel & congé (6 captures)');
 console.log('   - Mini-Doodle (8 captures)');
 console.log('   - Gestion de caisse d\'église (7 captures)');
 console.log('💡 Utilisez onclick="openGallery(\'nom-du-projet\')" pour ouvrir une galerie.');
+console.log('🌓 Utilisez le bouton ☀️/🌙 pour changer de thème.');
