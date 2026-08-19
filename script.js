@@ -371,4 +371,107 @@ console.log('   - Gestion du personnel & congé (6 captures)');
 console.log('   - Mini-Doodle (8 captures)');
 console.log('   - Gestion de caisse d\'église (7 captures)');
 console.log('💡 Utilisez onclick="openGallery(\'nom-du-projet\')" pour ouvrir une galerie.');
+// ==========================================
+// FORMULAIRE DE CONTACT - EMAILJS
+// ==========================================
+
+// Initialisation d'EmailJS
+// 👉 Remplace par tes propres identifiants
+const EMAILJS_CONFIG = {
+    publicKey: 'YOUR_PUBLIC_KEY',    // Remplace par ta clé publique
+    serviceID: 'YOUR_SERVICE_ID',    // Remplace par ton Service ID
+    templateID: 'YOUR_TEMPLATE_ID'   // Remplace par ton Template ID
+};
+
+// Fonction d'envoi
+async function sendEmail(formData) {
+    try {
+        const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                service_id: EMAILJS_CONFIG.serviceID,
+                template_id: EMAILJS_CONFIG.templateID,
+                user_id: EMAILJS_CONFIG.publicKey,
+                template_params: {
+                    to_email: 'niainakevin17@gmail.com',
+                    user_name: formData.user_name,
+                    user_email: formData.user_email,
+                    subject: formData.subject,
+                    message: formData.message,
+                }
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error('Erreur d\'envoi');
+        }
+
+        return { success: true };
+    } catch (error) {
+        console.error('Erreur EmailJS:', error);
+        return { success: false, error: error.message };
+    }
+}
+
+// Gestionnaire du formulaire
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        // Récupère les données
+        const formData = {
+            user_name: document.getElementById('user_name').value.trim(),
+            user_email: document.getElementById('user_email').value.trim(),
+            subject: document.getElementById('subject').value.trim(),
+            message: document.getElementById('message').value.trim()
+        };
+
+        // Validation basique
+        if (!formData.user_name || !formData.user_email || !formData.subject || !formData.message) {
+            formStatus.className = 'form-status error';
+            formStatus.textContent = '❌ Tous les champs sont obligatoires.';
+            return;
+        }
+
+        // Validation email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.user_email)) {
+            formStatus.className = 'form-status error';
+            formStatus.textContent = '❌ Veuillez entrer une adresse email valide.';
+            return;
+        }
+
+        // Status "envoi en cours"
+        formStatus.className = 'form-status sending';
+        formStatus.textContent = '⏳ Envoi en cours...';
+
+        // Désactive le bouton
+        const submitBtn = contactForm.querySelector('.form-submit');
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi...';
+
+        // Envoi
+        const result = await sendEmail(formData);
+
+        if (result.success) {
+            formStatus.className = 'form-status success';
+            formStatus.textContent = '✅ Message envoyé avec succès ! Je vous répondrai dans les plus brefs délais.';
+            contactForm.reset();
+        } else {
+            formStatus.className = 'form-status error';
+            formStatus.textContent = '❌ Erreur lors de l\'envoi. Veuillez réessayer ou me contacter directement par email.';
+            console.error('Erreur d\'envoi:', result.error);
+        }
+
+        // Réactive le bouton
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer';
+    });
+}
 console.log('🌓 Utilisez le bouton ☀️/🌙 pour changer de thème.');
