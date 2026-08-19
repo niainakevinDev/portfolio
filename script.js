@@ -364,23 +364,15 @@ themeToggle.addEventListener('click', () => {
     }
 });
 
-console.log('✅ Portfolio chargé avec succès !');
-console.log('📸 Galeries disponibles :');
-console.log('   - NexusShop (9 captures)');
-console.log('   - Gestion du personnel & congé (6 captures)');
-console.log('   - Mini-Doodle (8 captures)');
-console.log('   - Gestion de caisse d\'église (7 captures)');
-console.log('💡 Utilisez onclick="openGallery(\'nom-du-projet\')" pour ouvrir une galerie.');
 // ==========================================
 // FORMULAIRE DE CONTACT - EMAILJS
 // ==========================================
 
-// Initialisation d'EmailJS
-// 👉 Remplace par tes propres identifiants
+// 👉 REMPLACE PAR TES PROPRES IDENTIFIANTS
 const EMAILJS_CONFIG = {
-    publicKey: 'YOUR_PUBLIC_KEY',    // Remplace par ta clé publique
-    serviceID: 'YOUR_SERVICE_ID',    // Remplace par ton Service ID
-    templateID: 'YOUR_TEMPLATE_ID'   // Remplace par ton Template ID
+    publicKey: 'YOUR_PUBLIC_KEY',
+    serviceID: 'YOUR_SERVICE_ID',
+    templateID: 'YOUR_TEMPLATE_ID'
 };
 
 // Fonction d'envoi
@@ -474,4 +466,12 @@ if (contactForm) {
         submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Envoyer';
     });
 }
+
+console.log('✅ Portfolio chargé avec succès !');
+console.log('📸 Galeries disponibles :');
+console.log('   - NexusShop (9 captures)');
+console.log('   - Gestion du personnel & congé (6 captures)');
+console.log('   - Mini-Doodle (8 captures)');
+console.log('   - Gestion de caisse d\'église (7 captures)');
+console.log('💡 Utilisez onclick="openGallery(\'nom-du-projet\')" pour ouvrir une galerie.');
 console.log('🌓 Utilisez le bouton ☀️/🌙 pour changer de thème.');
