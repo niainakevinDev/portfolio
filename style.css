@@ -386,6 +386,22 @@ nav {
     transform: translateY(-3px);
 }
 
+/* ==========================================
+   BOUTON TERTIAIRE (CV)
+   ========================================== */
+.btn.tertiary {
+    background: rgba(255, 255, 255, 0.05);
+    color: #e8e8ed;
+    border: 2px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn.tertiary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
 .btn.small {
     padding: 8px 18px;
     font-size: 0.8rem;
@@ -1336,6 +1352,17 @@ body.light-theme .lang-toggle:hover {
     background: rgba(0, 0, 0, 0.05);
     color: #1a1a2e;
     border-color: rgba(0, 0, 0, 0.12);
+}
+
+body.light-theme .btn.tertiary {
+    background: rgba(0, 0, 0, 0.03);
+    color: #1a1a2e;
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .btn.tertiary:hover {
+    background: rgba(0, 0, 0, 0.06);
+    border-color: rgba(0, 0, 0, 0.15);
 }
 
 body.light-theme #hero {
