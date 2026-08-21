@@ -700,9 +700,9 @@ langToggle.addEventListener('click', () => {
 
 // 👉 REMPLACE PAR TES PROPRES IDENTIFIANTS
 const EMAILJS_CONFIG = {
-    publicKey: 'YOUR_PUBLIC_KEY',
-    serviceID: 'YOUR_SERVICE_ID',
-    templateID: 'YOUR_TEMPLATE_ID'
+    publicKey: 'fVDbV4n8Vi2aKt-Rb',
+    serviceID: 'service_dkvqny6',
+    templateID: 'template_z6yofmo'
 };
 
 async function sendEmail(formData) {
