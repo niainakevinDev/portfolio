@@ -380,6 +380,7 @@ const translations = {
             description: 'Étudiant en <strong>2<sup>e</sup> année à l\'ENI</strong>, je conçois des applications fonctionnelles et élégantes. Je maîtrise aussi bien le <strong>développement web</strong> que le <strong>desktop</strong>.',
             btnProjects: 'Voir les projets',
             btnContact: 'Contact',
+            btnCV: 'Télécharger mon CV',
             stats: { projects: 'Projets', bac: 'Bac', years: "Années d'études" }
         },
         en: {
@@ -389,6 +390,7 @@ const translations = {
             description: 'Student in <strong>2<sup>nd</sup> year at ENI</strong>, I design functional and elegant applications. I master both <strong>web development</strong> and <strong>desktop</strong> development.',
             btnProjects: 'View projects',
             btnContact: 'Contact',
+            btnCV: 'Download my CV',
             stats: { projects: 'Projects', bac: 'Bac', years: 'Years of study' }
         }
     },
@@ -516,8 +518,13 @@ function applyTranslations(lang) {
     const subtitle = document.querySelector('.hero-text .subtitle');
     subtitle.innerHTML = `${hero.subtitle} <span class="accent">${hero.subtitleAccent}</span>`;
     document.querySelector('.hero-text .description').innerHTML = hero.description;
-    document.querySelector('.hero-actions .btn.primary').innerHTML = `<i class="fas fa-arrow-right"></i> ${hero.btnProjects}`;
-    document.querySelector('.hero-actions .btn.secondary').innerHTML = `<i class="fas fa-paper-plane"></i> ${hero.btnContact}`;
+    
+    const heroBtns = document.querySelectorAll('.hero-actions .btn');
+    if (heroBtns.length === 3) {
+        heroBtns[0].innerHTML = `<i class="fas fa-arrow-right"></i> ${hero.btnProjects}`;
+        heroBtns[1].innerHTML = `<i class="fas fa-paper-plane"></i> ${hero.btnContact}`;
+        heroBtns[2].innerHTML = `<i class="fas fa-download"></i> ${hero.btnCV}`;
+    }
     
     // Stats
     const stats = hero.stats;
@@ -778,11 +785,26 @@ if (contactForm) {
     });
 }
 
+// ==========================================
+// SUIVI DU TÉLÉCHARGEMENT DU CV
+// ==========================================
+
+document.querySelector('.btn.tertiary')?.addEventListener('click', function() {
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'download', {
+            'event_category': 'CV',
+            'event_label': 'Téléchargement CV'
+        });
+    }
+    console.log('📄 Téléchargement du CV');
+});
+
 console.log('✅ Portfolio chargé avec succès !');
 console.log('📸 Galeries disponibles :');
 console.log('   - NexusShop (9 captures)');
 console.log('   - Gestion du personnel & congé (6 captures)');
 console.log('   - Mini-Doodle (8 captures)');
 console.log('   - Gestion de caisse d\'église (7 captures)');
+console.log('📄 CV disponible au téléchargement');
 console.log('🌓 Utilisez le bouton ☀️/🌙 pour changer de thème.');
 console.log('🌐 Utilisez le bouton FR/EN pour changer de langue.');
